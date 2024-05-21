@@ -37,3 +37,27 @@ public class NetworkingClient {
                         InputStreamReader(System.in));
 
                 System.out.println("Enter your name. Type Bye to exit. ");
+
+                // Read data from standard input device and write it
+                // to the output stream of the client socket.
+                msg = stdIn.readLine().trim();
+                pw.println(msg);
+
+                // Read data from the input stream of the client socket.
+                System.out.println("Message returned from the server = " + br.readLine());
+
+                pw.close();
+                br.close();
+                client.close();
+
+                // Stop the operation
+                if (msg.equalsIgnoreCase("Bye")) {
+                    break;
+                }
+
+            } catch (IOException ie) {
+                System.out.println("I/O error " + ie);
+            }
+        }
+    }
+}
